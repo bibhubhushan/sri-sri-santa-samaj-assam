@@ -481,7 +481,7 @@
     if (!frames.length) return;
     heroAt = (i + frames.length) % frames.length;
     frames.forEach((f, n) => f.classList.toggle('on', n === heroAt));
-    $$('button', heroTicks).forEach((t, n) => {
+    (heroTicks ? $$('button', heroTicks) : []).forEach((t, n) => {
       // restart the fill animation by detaching and re-adding the class
       t.classList.remove('on');
       if (n === heroAt) { void t.offsetWidth; t.classList.add('on'); }
@@ -509,7 +509,7 @@
     }
     paintCap(0);
     if (reduced || compact) {
-      $$('button', heroTicks).forEach(t => { t.querySelector('i').style.transform = 'scaleY(1)'; });
+      (heroTicks ? $$('button', heroTicks) : []).forEach(t => { t.querySelector('i').style.transform = 'scaleY(1)'; });
     } else {
       showFrame(0);
       heroPlay();
@@ -530,11 +530,19 @@
   const lbCap = $('#lbCap');
   const lbCount = $('#lbCount');
 
+  function imageFor(el) {
+    return el?.matches?.('img') ? el : $('img', el);
+  }
+
   function largestImageSource(el) {
-    const img = $('img', el);
+    const img = imageFor(el);
     if (!img) return '';
     const candidates = [];
-    const sets = [img.getAttribute('srcset'), ...$$('source', el).map(source => source.getAttribute('srcset'))];
+    const picture = img.closest('picture');
+    const sets = [
+      img.getAttribute('srcset'),
+      ...$$('source', picture || el).map(source => source.getAttribute('srcset'))
+    ];
     sets.filter(Boolean).forEach(set => {
       set.split(',').forEach(entry => {
         const parts = entry.trim().split(/\s+/);
@@ -547,17 +555,20 @@
   }
 
   function photoCaption(el) {
-    const heroIndex = frames.indexOf(el);
+    const img = imageFor(el);
+    const heroFrame = el.matches?.('.hero-frame') ? el : el.closest('.hero-frame');
+    const heroIndex = frames.indexOf(heroFrame);
     if (heroIndex >= 0 && HERO[heroIndex]) {
       return { as: HERO[heroIndex].as, en: HERO[heroIndex].en, credit: HERO[heroIndex].credit };
     }
 
-    const cap = $('figcaption', el);
+    const figure = el.matches?.('figure') ? el : el.closest('figure');
+    const cap = figure ? $('figcaption', figure) : null;
     if (cap) {
       return {
         as: $('b', cap)?.textContent?.trim() || '',
         en: $('span', cap)?.textContent?.trim() || cap.textContent?.trim() || '',
-        credit: el.dataset.credit || ''
+        credit: figure.dataset.credit || 'SRI SRI SANTA SAMAJ photo archive'
       };
     }
 
@@ -594,17 +605,33 @@
 
     return {
       as: '',
-      en: $('img', el)?.alt || 'SRI SRI SANTA SAMAJ photograph',
-      credit: el.dataset.credit || 'SRI SRI SANTA SAMAJ photo archive'
+      en: img?.alt || 'SRI SRI SANTA SAMAJ photograph',
+      credit: el.dataset.credit || el.closest('[data-credit]')?.dataset.credit || 'SRI SRI SANTA SAMAJ photo archive'
     };
   }
 
-  const photoCandidates = [...$$('figure.plate'), ...frames];
+  // Every visible content image is a lightbox trigger. Using the image itself
+  // avoids relying on section-specific wrapper classes, so newly added photos
+  // automatically inherit the same full-screen behaviour.
+  const photoCandidates = $$('main img');
   const shots = [];
   const shotIndexBySource = new Map();
 
+  const photoKey = src => (src || '').replace(/-\d+\.(?:webp|jpe?g|png)(?:\?.*)?$/i, '');
+  const sourceScore = src => Number(src?.match(/-(\d+)\.(?:webp|jpe?g|png)(?:\?.*)?$/i)?.[1]) || 0;
+  const bestSourceByPhoto = new Map();
   photoCandidates.forEach(el => {
-    const full = el.dataset.full || largestImageSource(el);
+    const img = imageFor(el);
+    const local = el.closest('[data-full]')?.dataset.full || largestImageSource(el);
+    const key = photoKey(img?.getAttribute('src'));
+    const best = bestSourceByPhoto.get(key);
+    if (key && local && (!best || sourceScore(local) > sourceScore(best))) bestSourceByPhoto.set(key, local);
+  });
+
+  photoCandidates.forEach(el => {
+    const img = imageFor(el);
+    const local = el.dataset.full || el.closest('[data-full]')?.dataset.full || largestImageSource(el);
+    const full = bestSourceByPhoto.get(photoKey(img?.getAttribute('src'))) || local;
     if (!full) return;
     el.dataset.full = full;
     let index = shotIndexBySource.get(full);
@@ -625,7 +652,7 @@
 
     lbImg.classList.remove('ready');
     lbImg.src = el.dataset.full;
-    lbImg.alt = $('img', el)?.alt || '';
+    lbImg.alt = imageFor(el)?.alt || '';
     lbCap.innerHTML = `<b>${caption.as}</b><span>${caption.en}</span><em>${caption.credit}</em>`;
     lbCount.textContent = `${String(lbAt + 1).padStart(2, '0')} / ${String(shots.length).padStart(2, '0')}`;
 
@@ -666,10 +693,14 @@
       const i = Number(el.dataset.lightboxIndex);
       el.tabIndex = 0;
       el.setAttribute('role', 'button');
-      const cap = $('figcaption', el);
+      const cap = el.closest('figure')?.querySelector('figcaption');
       const visibleLabel = cap?.textContent?.trim().replace(/\s+/g, ' ') || `Photograph ${i + 1}`;
       el.setAttribute('aria-label', `${visibleLabel}. Open photograph ${i + 1} of ${shots.length}`);
-      el.addEventListener('click', () => lbOpen(i));
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        lbOpen(i);
+      });
       el.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lbOpen(i); }
       });
