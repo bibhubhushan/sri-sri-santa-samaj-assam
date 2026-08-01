@@ -450,28 +450,28 @@
   /* ---------- Hero sequence ---------- */
   const HERO = [
     {
-      as: 'সেৱাৰ আগতে সংকল্প',
-      en: 'Prayer becomes a promise.',
-      value: 'We gather in faith, then carry that responsibility into service.',
+      as: 'সমাজৰ সংৰক্ষিত আলোকচিত্ৰ',
+      en: 'A gathering in the Samaj archive.',
+      value: 'The supplied file does not identify the exact event or date.',
+      credit: '© শ্ৰীশ্ৰীসন্ত সমাজ অসম · event/date not supplied'
+    },
+    {
+      as: 'পৰিৱেশ কাৰ্যসূচী',
+      en: 'Students with saplings.',
+      value: 'The Samaj banner identifies an environment programme; the date was not supplied.',
+      credit: '© শ্ৰীশ্ৰীসন্ত সমাজ অসম · date not supplied'
+    },
+    {
+      as: 'সমাজৰ সংৰক্ষিত আলোকচিত্ৰ',
+      en: 'Community prayer gathering.',
+      value: 'The exact event and date are not identified in the supplied file.',
+      credit: '© শ্ৰীশ্ৰীসন্ত সমাজ অসম · event/date not supplied'
+    },
+    {
+      as: 'বানপানী সাহায্য',
+      en: 'Flood-relief collection in Sivsagar.',
+      value: 'A collection point documented in the Samaj’s supplied relief photographs.',
       credit: '© শ্ৰীশ্ৰীসন্ত সমাজ অসম'
-    },
-    {
-      as: 'অবিৰত সেৱা',
-      en: 'Service must keep moving.',
-      value: 'Like the Brahmaputra, care must reach beyond the familiar.',
-      credit: '© পৱন বৰ্মন · CC BY 4.0'
-    },
-    {
-      as: 'একেলগে থিয়, একেলগে সেৱা',
-      en: 'We stand together. We serve together.',
-      value: 'No family should face hardship alone.',
-      credit: '© শ্ৰীশ্ৰীসন্ত সমাজ অসম'
-    },
-    {
-      as: 'এগছি বন্তিৰ পৰা বহু পোহৰ',
-      en: 'One light becomes many.',
-      value: 'Knowledge and compassion grow when each person carries them forward.',
-      credit: '© Gitartha.bordoloi · CC BY-SA 4.0'
     }
   ];
   const HOLD = 7000;
@@ -486,7 +486,7 @@
     heroCap.classList.add('fade');
     setTimeout(() => {
       heroCap.innerHTML = `
-        <span class="cap-kicker">Our value · আমাৰ মূল্যবোধ</span>
+        <span class="cap-kicker">From the Samaj record · সমাজৰ নথিৰ পৰা</span>
         <span class="cap-title"><b lang="as">${HERO[i].as}</b><strong>${HERO[i].en}</strong></span>
         <span class="cap-value">${HERO[i].value}</span>
         <span class="cap-credit">${HERO[i].credit}</span>`;
