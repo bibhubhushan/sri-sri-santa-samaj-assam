@@ -2096,12 +2096,12 @@ body.lb-open { overflow: hidden; }
   .mosaic figcaption b { font-size: 15px; }
   .mosaic figcaption span { font-size: 11px; }
 
-  /* 7. Membership: eligibility and action without a second long article. */
-  #involve { background: var(--ink); color: var(--paper); }
-  #involve .eyebrow { color: var(--gold); }
-  #involve .h2 { color: var(--paper); }
-  .mobile-membership > p { color: rgba(253,249,241,.72); font-size: 14px; }
-  .mobile-membership details { margin-top: 18px; border-block: 1px solid rgba(253,249,241,.2); }
+  /* 7. Membership: a warm, light action block rather than another dark wall. */
+  #involve { background: var(--sand); color: var(--ink); }
+  #involve h2 { color: var(--ink); }
+  .mobile-kicker { color: var(--red-deep); }
+  .mobile-membership > p { color: var(--muted); font-size: 14px; }
+  .mobile-membership details { margin-top: 18px; border-block: 1px solid var(--line-2); }
   .mobile-membership summary,
   .mobile-registration-details summary {
     display: flex;
@@ -2112,11 +2112,15 @@ body.lb-open { overflow: hidden; }
     list-style: none;
     font-weight: 700;
   }
-  .mobile-membership summary { color: var(--paper); }
-  .mobile-membership ul { margin: 0 0 16px; padding-left: 20px; color: rgba(253,249,241,.75); font-size: 13px; }
+  .mobile-membership summary { color: var(--ink); }
+  .mobile-membership ul { margin: 0 0 16px; padding-left: 20px; color: var(--muted); font-size: 13px; }
   .mobile-membership .btn { width: 100%; justify-content: center; min-height: 48px; margin-top: 18px; }
 
   /* 8. Trust, support and one consolidated contact form. */
+  #support { background: var(--cream); color: var(--ink); }
+  #support h2 { color: var(--ink); }
+  #support .eyebrow { color: var(--red-deep); }
+  #support .italic-accent { color: var(--red); }
   .mobile-support-actions { gap: 16px; }
   .mobile-trust-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
   .mobile-trust-row span {
@@ -2126,8 +2130,8 @@ body.lb-open { overflow: hidden; }
     border-radius: var(--r-md);
     text-align: center;
   }
-  .mobile-trust-row b { display: block; color: var(--muga-lite); font: 700 17px var(--serif); }
-  .mobile-trust-row span { display: block; margin-top: 3px; color: rgba(253,249,241,.76); font-size: 9px; line-height: 1.25; }
+  .mobile-trust-row b { display: block; color: var(--red-deep); font: 700 17px var(--serif); }
+  .mobile-trust-row span { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; line-height: 1.25; }
   .mobile-support-warning {
     padding: 14px;
     border-left: 3px solid var(--red);
@@ -2140,19 +2144,20 @@ body.lb-open { overflow: hidden; }
     justify-content: center;
     min-height: 58px;
     padding: 10px 14px;
-    border: 1px solid rgba(253,249,241,.23);
+    border: 1px solid var(--line-2);
     border-radius: var(--r-md);
-    color: var(--paper);
+    background: var(--white);
+    color: var(--ink);
   }
-  .mobile-contact-action span { color: rgba(253,249,241,.58); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
+  .mobile-contact-action span { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
   .mobile-contact-action b { margin-top: 2px; font-size: 14px; overflow-wrap: anywhere; }
-  .mobile-registration-details { border-top: 1px solid rgba(253,249,241,.2); }
-  .mobile-registration-details summary { color: var(--paper); }
+  .mobile-registration-details { border-top: 1px solid var(--line-2); }
+  .mobile-registration-details summary { color: var(--ink); }
   .mobile-registration-details dl { margin: 0 0 14px; }
-  .mobile-registration-details dl div { padding-block: 9px; border-top: 1px solid rgba(253,249,241,.1); }
-  .mobile-registration-details dt { color: rgba(253,249,241,.55); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
-  .mobile-registration-details dd { margin: 3px 0 0; color: var(--paper); font-size: 12px; overflow-wrap: anywhere; }
-  #support .eyebrow-en { color: rgba(253,249,241,.76); }
+  .mobile-registration-details dl div { padding-block: 9px; border-top: 1px solid var(--line); }
+  .mobile-registration-details dt { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+  .mobile-registration-details dd { margin: 3px 0 0; color: var(--ink); font-size: 12px; overflow-wrap: anywhere; }
+  #support .eyebrow-en { color: var(--muted); }
 
   #contact { padding-top: 38px; }
   #contact .contact-grid { display: block; }

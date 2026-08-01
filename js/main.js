@@ -127,7 +127,7 @@
   recordToggle?.addEventListener('click', () => {
     const expanded = ledger.classList.toggle('mobile-expanded');
     recordToggle.setAttribute('aria-expanded', String(expanded));
-    recordToggle.firstChild.textContent = expanded ? 'Show first three programmes ' : 'View all seven programmes ';
+    recordToggle.firstChild.textContent = expanded ? 'Show first three programmes ' : 'View all six programmes ';
     recordToggle.querySelector('span').textContent = expanded ? '↑' : '↓';
   });
 
