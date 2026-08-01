@@ -2418,17 +2418,30 @@ body.magazine-open-body { overflow: hidden; }
   .hero { padding-top: 78px; padding-bottom: 40px; }
   .hero-grid { display: flex; flex-direction: column; gap: 0; }
   .hero-copy { display: contents; }
-  .hero-pill { order: 1; align-self: flex-start; margin-bottom: 12px; }
+  .hero-pill { display: none !important; }
+  .mobile-hero-origin {
+    order: 1;
+    display: flex !important;
+    align-items: center;
+    align-self: flex-start;
+    gap: 8px;
+    margin: 0 0 16px;
+    color: var(--red-deep);
+    font: 700 9px/1 var(--sans);
+    letter-spacing: .16em;
+  }
+  .mobile-hero-origin::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--red), var(--muga));
+  }
+  .mobile-hero-origin i { color: var(--muga); font-style: normal; }
   .hero-as { order: 2; margin: 0 0 4px; }
   .hero h1 { order: 3; max-width: 8.8ch; font-size: clamp(39px, 11.8vw, 48px); line-height: .95; }
   .hero-figure { order: 4; margin-top: 20px; }
-  .mobile-hero-location { order: 5; margin: 20px 0 0; padding-left: 18px; position: relative; }
-  .mobile-hero-location::before {
-    content: "";
-    position: absolute; left: 1px; top: .45em;
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--red); box-shadow: 0 0 0 5px rgba(198,37,43,.09);
-  }
+  .mobile-hero-location { display: none !important; }
   .mobile-hero-summary {
     order: 6;
     margin: 10px 0 0;
