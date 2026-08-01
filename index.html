@@ -103,7 +103,7 @@
       imagesrcset="assets/images/derived/namghar-interior-768.webp 768w, assets/images/derived/namghar-interior-1200.webp 1200w"
       imagesizes="(max-width: 900px) 100vw, 46vw">
 <link rel="stylesheet" href="css/lqip.css">
-<link rel="stylesheet" href="css/style.css?v=21">
+<link rel="stylesheet" href="css/style.css?v=22">
 </head>
 <body>
 
@@ -376,7 +376,7 @@
     </div>
 
     <div class="mobile-only mobile-programmes" aria-label="Our seven commitments">
-      <details class="mobile-programme">
+      <details class="mobile-programme" data-reveal>
         <summary>
           <img src="assets/images/derived/khol-performance-480.webp" width="94" height="94" loading="lazy" decoding="async" alt="Khol performance at a SRI SRI SANTA SAMAJ gathering">
           <span><small lang="as">কলা-সংস্কৃতি আৰু আধ্যাত্মিক বিকাশ</small><b>Art, culture and spiritual growth</b></span>
@@ -384,7 +384,7 @@
         </summary>
         <p>Exhibitions, publications and spiritual practice that carry Assamese culture forward.</p>
       </details>
-      <details class="mobile-programme">
+      <details class="mobile-programme" data-reveal>
         <summary>
           <img src="assets/images/derived/distribution-women-480.webp" width="94" height="94" loading="lazy" decoding="async" alt="Members of SRI SRI SANTA SAMAJ distributing cloth to village women">
           <span><small lang="as">সমাজ কল্যাণ</small><b>Social welfare</b></span>
@@ -392,7 +392,7 @@
         </summary>
         <p>Practical support for people facing hardship, without discrimination.</p>
       </details>
-      <details class="mobile-programme">
+      <details class="mobile-programme" data-reveal>
         <summary>
           <img src="assets/images/derived/scholarship-award-480.webp" width="94" height="94" loading="lazy" decoding="async" alt="A schoolgirl receiving an award">
           <span><small lang="as">শিশু শিক্ষা</small><b>Education for children</b></span>
@@ -400,7 +400,7 @@
         </summary>
         <p>Values-based learning, examinations, awards and educational materials for students.</p>
       </details>
-      <details class="mobile-programme">
+      <details class="mobile-programme" data-reveal>
         <summary>
           <span class="programme-mark" aria-hidden="true">04</span>
           <span><small lang="as">স্বাস্থ্য আৰু বিশুদ্ধ খোৱা পানী</small><b>Healthcare and clean water</b></span>
@@ -408,7 +408,7 @@
         </summary>
         <p>This is a registered objective. A verified programme photograph has not yet been supplied.</p>
       </details>
-      <details class="mobile-programme">
+      <details class="mobile-programme" data-reveal>
         <summary>
           <img src="assets/images/derived/loom-weaver-480.webp" width="94" height="94" loading="lazy" decoding="async" alt="A woman weaving a gamosa on a handloom">
           <span><small lang="as">মহিলা কল্যাণ</small><b>Women's welfare</b></span>
@@ -416,7 +416,7 @@
         </summary>
         <p>Direct support for expectant mothers and women in difficult circumstances.</p>
       </details>
-      <details class="mobile-programme">
+      <details class="mobile-programme" data-reveal>
         <summary>
           <img src="assets/images/derived/tree-planting-480.webp" width="94" height="94" loading="lazy" decoding="async" alt="Village members planting a sapling">
           <span><small lang="as">কৃষি আৰু পৰিৱেশ</small><b>Agriculture and environment</b></span>
@@ -424,7 +424,7 @@
         </summary>
         <p>Agriculture, animal husbandry, tree planting and cleaner village environments.</p>
       </details>
-      <details class="mobile-programme">
+      <details class="mobile-programme" data-reveal>
         <summary>
           <img src="assets/images/derived/doc-gyan-pradip-480.webp" width="94" height="94" loading="lazy" decoding="async" alt="Front cover of the SRI SRI SANTA SAMAJ publication Sadharan Gyan Pradip">
           <span><small lang="as">বিজ্ঞান-প্ৰযুক্তি সচেতনতা</small><b>Science and technology awareness</b></span>
@@ -776,21 +776,31 @@
           <span class="as-head" lang="as">বানপানী সাহায্য — শিৱসাগৰ জিলা</span>
           Flood relief,<br>Sivsagar district.
         </h2>
-        <figure class="mobile-only now-proof now-proof-digital plate flat"
-                data-full="assets/images/generated/flood-relief-campaign-v2.png"
-                data-credit="Flood-relief campaign graphic based on the SRI SRI SANTA SAMAJ archive record">
-          <picture>
-            <img src="assets/images/generated/flood-relief-campaign-v2-768.jpg"
-                 srcset="assets/images/generated/flood-relief-campaign-v2-480.jpg 480w,
-                         assets/images/generated/flood-relief-campaign-v2-768.jpg 768w,
-                         assets/images/generated/flood-relief-campaign-v2-1003.jpg 1003w"
-                 sizes="100vw" width="1003" height="1568" loading="lazy" decoding="async"
-                 alt="People bringing food, water, cloth and a contribution envelope to the SRI SRI SANTA SAMAJ flood-relief collection for Sivsagar district">
-          </picture>
-          <figcaption><b lang="as">বানপানী সাহায্য</b><span>Flood-relief donation box · Sivsagar district</span></figcaption>
-        </figure>
+        <article class="mobile-only relief-campaign-card" data-reveal
+                 aria-label="Flood-relief programme record for Sivsagar district">
+          <div class="relief-ripples" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="relief-campaign-top">
+            <span><i></i> Community relief record</span>
+            <b>শিৱসাগৰ · Sivsagar</b>
+          </div>
+          <div class="relief-campaign-copy">
+            <small lang="as">বান আহিলে, মানুহ একেলগে থিয় হয়।</small>
+            <h3>When floods rise,<br><em>people rise together.</em></h3>
+            <p>Donation box for flood relief programme at Sivsagar district.</p>
+          </div>
+          <div class="relief-record-strip" aria-label="Information preserved from the supplied donation-box photograph">
+            <span><b>01</b> Flood relief</span>
+            <span><b>02</b> Donation record</span>
+            <span><b>03</b> Sivsagar district</span>
+          </div>
+          <div class="relief-verify">
+            <span aria-hidden="true">✓</span>
+            <p><b>Confirm before contributing</b>This page preserves an archive record. Call SRI SRI SANTA SAMAJ to verify the current drive.</p>
+            <a href="tel:+917002942704" aria-label="Call SRI SRI SANTA SAMAJ at 70029 42704">Call →</a>
+          </div>
+        </article>
         <p class="lead" data-reveal style="--d:140ms">
-          This digital graphic preserves the wording of a SRI SRI SANTA SAMAJ archive
+          This campaign card preserves the wording of a SRI SRI SANTA SAMAJ archive
           photograph documenting a flood-relief collection for Sivsagar district. Contact
           SRI SRI SANTA SAMAJ directly to confirm whether a collection is currently active.
         </p>
@@ -829,6 +839,12 @@
           সমাজে নিশ্চিত কৰা ছয়টা কাৰ্যসূচীৰ নাম অনুসৰি আলোকচিত্ৰসমূহ সজোৱা হৈছে।
         </span>
       </p>
+    </div>
+
+    <div class="mobile-only mobile-gallery-guide" data-reveal aria-hidden="true">
+      <span>Swipe photographs</span>
+      <i><b id="galleryProgress"></b></i>
+      <strong id="galleryCount">01 / 06</strong>
     </div>
 
     <div class="mosaic" id="gallery" data-reveal="mask">
@@ -1481,6 +1497,6 @@
   </div>
 </div>
 
-<script src="js/main.js?v=21" defer></script>
+<script src="js/main.js?v=22" defer></script>
 </body>
 </html>

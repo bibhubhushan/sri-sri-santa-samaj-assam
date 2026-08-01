@@ -128,7 +128,7 @@
   recordToggle?.addEventListener('click', () => {
     const expanded = ledger.classList.toggle('mobile-expanded');
     recordToggle.setAttribute('aria-expanded', String(expanded));
-    recordToggle.firstChild.textContent = expanded ? 'Show first three programmes ' : 'View all six programmes ';
+    recordToggle.firstChild.textContent = expanded ? 'Show first three records ' : 'View all seven records ';
     recordToggle.querySelector('span').textContent = expanded ? '↑' : '↓';
   });
 
@@ -305,6 +305,87 @@
     });
   }
 
+  /* ---------- Mobile photographic motion + archive progress ---------- */
+  const phoneMotion = window.matchMedia('(max-width: 768px)');
+  const mobileMotionPhotos = $$('.hero-stage img, #gallery .plate img, .mobile-membership-photo img');
+  const gallery = $('#gallery');
+  const galleryCards = gallery ? $$('.plate', gallery) : [];
+  const galleryProgress = $('#galleryProgress');
+  const galleryCount = $('#galleryCount');
+
+  mobileMotionPhotos.forEach(img => img.classList.add('mobile-motion-photo'));
+
+  function updateMobilePhotoMotion() {
+    if (!phoneMotion.matches || reduced) return;
+    const vh = window.innerHeight;
+    mobileMotionPhotos.forEach(img => {
+      const host = img.closest('.hero-stage, .plate');
+      if (!host) return;
+      const r = host.getBoundingClientRect();
+      if (r.bottom < -80 || r.top > vh + 80) return;
+      const centre = r.top + r.height / 2;
+      const shift = clamp((vh / 2 - centre) / vh * 15, -8, 8);
+      img.style.setProperty('--photo-y', `${shift.toFixed(2)}px`);
+    });
+  }
+
+  function updateGalleryState() {
+    if (!gallery || !galleryCards.length || !phoneMotion.matches) return;
+    const viewportCentre = gallery.getBoundingClientRect().left + gallery.clientWidth / 2;
+    let active = 0;
+    let nearest = Infinity;
+    galleryCards.forEach((card, i) => {
+      const r = card.getBoundingClientRect();
+      const distance = Math.abs(r.left + r.width / 2 - viewportCentre);
+      if (distance < nearest) { nearest = distance; active = i; }
+    });
+    galleryCards.forEach((card, i) => card.classList.toggle('is-active', i === active));
+    if (galleryCount) galleryCount.textContent = `${String(active + 1).padStart(2, '0')} / ${String(galleryCards.length).padStart(2, '0')}`;
+    if (galleryProgress) {
+      const max = Math.max(1, gallery.scrollWidth - gallery.clientWidth);
+      const progress = (1 / galleryCards.length) + (gallery.scrollLeft / max) * (1 - 1 / galleryCards.length);
+      galleryProgress.style.transform = `scaleX(${clamp(progress).toFixed(4)})`;
+    }
+  }
+
+  if (gallery) {
+    let galleryTicking = false;
+    gallery.addEventListener('scroll', () => {
+      if (galleryTicking) return;
+      galleryTicking = true;
+      requestAnimationFrame(() => {
+        updateGalleryState();
+        galleryTicking = false;
+      });
+    }, { passive: true });
+
+    if (!reduced) {
+      let nudgeTimers = [];
+      const cancelNudge = () => {
+        nudgeTimers.forEach(clearTimeout);
+        nudgeTimers = [];
+      };
+      gallery.addEventListener('pointerdown', cancelNudge, { passive: true, once: true });
+      const galleryIntro = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting || !phoneMotion.matches || gallery.scrollLeft > 2) return;
+        galleryIntro.disconnect();
+        nudgeTimers = [
+          setTimeout(() => gallery.scrollTo({ left: 34, behavior: 'smooth' }), 280),
+          setTimeout(() => gallery.scrollTo({ left: 0, behavior: 'smooth' }), 920)
+        ];
+      }, { threshold: .45 });
+      galleryIntro.observe(gallery);
+    }
+  }
+
+  const reliefCampaign = $('.relief-campaign-card');
+  if (mobileDock && reliefCampaign) {
+    const reliefDockObserver = new IntersectionObserver(([entry]) => {
+      mobileDock.classList.toggle('is-suppressed', entry.isIntersecting);
+    }, { threshold: .12 });
+    reliefDockObserver.observe(reliefCampaign);
+  }
+
   /* ---------- Unified scroll / rAF loop ---------- */
   let ticking = false;
 
@@ -328,6 +409,8 @@
 
     updateMission();
     updateParallax();
+    updateMobilePhotoMotion();
+    updateGalleryState();
     ticking = false;
   }
 
