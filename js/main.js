@@ -526,6 +526,36 @@
     }
   }
 
+  /* ---------- Mobile hero promise ---------- */
+  const heroStatement = $('#heroStatement');
+  const heroFocusWord = $('#heroFocusWord');
+  const heroFocusAreas = ['Education', 'Welfare', 'Culture', 'Relief'];
+  let heroFocusAt = 0;
+  let heroFocusTimer = null;
+
+  function advanceHeroFocus() {
+    if (!heroFocusWord) return;
+    heroFocusWord.classList.add('changing');
+    setTimeout(() => {
+      heroFocusAt = (heroFocusAt + 1) % heroFocusAreas.length;
+      heroFocusWord.textContent = heroFocusAreas[heroFocusAt];
+      heroFocusWord.classList.remove('changing');
+    }, reduced ? 0 : 160);
+  }
+
+  function restartHeroFocus() {
+    clearInterval(heroFocusTimer);
+    if (!reduced && compact) heroFocusTimer = setInterval(advanceHeroFocus, 2800);
+  }
+
+  if (heroStatement && compact) {
+    heroStatement.addEventListener('click', () => {
+      advanceHeroFocus();
+      restartHeroFocus();
+    });
+    restartHeroFocus();
+  }
+
   /* ---------- Lightbox ---------- */
   const lb = $('#lightbox');
   const lbImg = $('#lbImg');
