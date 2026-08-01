@@ -236,6 +236,7 @@
 
   if (preview && fine && !reduced && rows.length) {
     rows.forEach(row => {
+      if (!row.dataset.img) return;
       const img = document.createElement('img');
       img.src = row.dataset.img;
       img.alt = '';
@@ -452,13 +453,13 @@
     {
       as: 'বিশ্ব পৰিৱেশ দিৱস উদ্‌যাপন',
       en: 'World Environment Day Celebration.',
-      value: 'Students with saplings in a programme photograph verified by the Samaj.',
+      value: 'Students with saplings in a programme photograph verified by SRI SRI SANTA SAMAJ.',
       credit: 'শ্ৰীশ্ৰীসন্ত সমাজ অসম · date and venue not yet supplied'
     },
     {
       as: 'বিনামূলীয়া শিক্ষা-সামগ্ৰী বিতৰণ',
       en: 'Free Distribution of Educational Kits.',
-      value: 'A student receives educational materials in the Samaj programme photograph.',
+      value: 'A student receives educational materials in the SRI SRI SANTA SAMAJ programme photograph.',
       credit: 'শ্ৰীশ্ৰীসন্ত সমাজ অসম · date and venue not yet supplied'
     },
     {
@@ -470,7 +471,7 @@
     {
       as: 'মহিলা কল্যাণ',
       en: 'Women\'s Welfare.',
-      value: 'A Samaj photograph connected with its women\'s welfare work.',
+      value: 'A SRI SRI SANTA SAMAJ photograph connected with its women\'s welfare work.',
       credit: 'শ্ৰীশ্ৰীসন্ত সমাজ অসম · date and venue not yet supplied'
     }
   ];
@@ -486,7 +487,7 @@
     heroCap.classList.add('fade');
     setTimeout(() => {
       heroCap.innerHTML = `
-        <span class="cap-kicker">From the Samaj record · সমাজৰ নথিৰ পৰা</span>
+        <span class="cap-kicker">From the SRI SRI SANTA SAMAJ record · সমাজৰ নথিৰ পৰা</span>
         <span class="cap-title"><b lang="as">${HERO[i].as}</b><strong>${HERO[i].en}</strong></span>
         <span class="cap-value">${HERO[i].value}</span>
         <span class="cap-credit">${HERO[i].credit}</span>`;
@@ -546,20 +547,104 @@
   const lbImg = $('#lbImg');
   const lbCap = $('#lbCap');
   const lbCount = $('#lbCount');
-  const shots = $$('[data-full]');
+
+  function largestImageSource(el) {
+    const img = $('img', el);
+    if (!img) return '';
+    const candidates = [];
+    const sets = [img.getAttribute('srcset'), ...$$('source', el).map(source => source.getAttribute('srcset'))];
+    sets.filter(Boolean).forEach(set => {
+      set.split(',').forEach(entry => {
+        const parts = entry.trim().split(/\s+/);
+        const score = Number.parseFloat(parts[1]) || 0;
+        if (parts[0]) candidates.push({ src: parts[0], score });
+      });
+    });
+    candidates.sort((a, b) => b.score - a.score);
+    return candidates[0]?.src || img.getAttribute('src') || '';
+  }
+
+  function photoCaption(el) {
+    const heroIndex = frames.indexOf(el);
+    if (heroIndex >= 0 && HERO[heroIndex]) {
+      return { as: HERO[heroIndex].as, en: HERO[heroIndex].en, credit: HERO[heroIndex].credit };
+    }
+
+    const cap = $('figcaption', el);
+    if (cap) {
+      return {
+        as: $('b', cap)?.textContent?.trim() || '',
+        en: $('span', cap)?.textContent?.trim() || cap.textContent?.trim() || '',
+        credit: el.dataset.credit || ''
+      };
+    }
+
+    const led = el.closest('.led');
+    if (led) {
+      return {
+        as: $('.led-body b', led)?.textContent?.trim() || '',
+        en: $('.led-body span', led)?.textContent?.trim() || '',
+        credit: 'SRI SRI SANTA SAMAJ photo archive'
+      };
+    }
+
+    const row = el.closest('.work-row');
+    if (row) {
+      const heading = $('.h3', row);
+      const as = $('i', heading)?.textContent?.trim() || '';
+      const copy = heading?.cloneNode(true);
+      $('i', copy)?.remove();
+      return {
+        as,
+        en: copy?.textContent?.trim() || $('img', el)?.alt || '',
+        credit: 'SRI SRI SANTA SAMAJ photo archive'
+      };
+    }
+
+    const band = el.closest('.plate-band');
+    if (band) {
+      return {
+        as: $('.plate-label strong', band)?.textContent?.trim() || '',
+        en: $('.plate-label .value-copy', band)?.textContent?.trim() || '',
+        credit: 'SRI SRI SANTA SAMAJ photo archive'
+      };
+    }
+
+    return {
+      as: '',
+      en: $('img', el)?.alt || 'SRI SRI SANTA SAMAJ photograph',
+      credit: el.dataset.credit || 'SRI SRI SANTA SAMAJ photo archive'
+    };
+  }
+
+  const photoCandidates = [...$$('figure.plate'), ...frames];
+  const shots = [];
+  const shotIndexBySource = new Map();
+
+  photoCandidates.forEach(el => {
+    const full = el.dataset.full || largestImageSource(el);
+    if (!full) return;
+    el.dataset.full = full;
+    let index = shotIndexBySource.get(full);
+    if (index === undefined) {
+      index = shots.length;
+      shots.push(el);
+      shotIndexBySource.set(full, index);
+    }
+    el.dataset.lightboxIndex = String(index);
+    el.classList.add('photo-zoom');
+  });
   let lbAt = 0, lastFocus = null;
 
   function lbRender(i) {
     lbAt = (i + shots.length) % shots.length;
     const el = shots[lbAt];
-    const cap = $('figcaption', el);
-    const as = cap ? ($('b', cap)?.textContent || '') : '';
-    const en = cap ? ($('span', cap)?.textContent || '') : '';
+    const caption = photoCaption(el);
 
     lbImg.classList.remove('ready');
     lbImg.src = el.dataset.full;
     lbImg.alt = $('img', el)?.alt || '';
-    lbCap.innerHTML = `<b>${as}</b><span>${en}</span><em>${el.dataset.credit || ''}</em>`;
+    lbCap.innerHTML = `<b>${caption.as}</b><span>${caption.en}</span><em>${caption.credit}</em>`;
     lbCount.textContent = `${String(lbAt + 1).padStart(2, '0')} / ${String(shots.length).padStart(2, '0')}`;
 
     const show = () => lbImg.classList.add('ready');
@@ -595,7 +680,8 @@
   }
 
   if (lb && shots.length) {
-    shots.forEach((el, i) => {
+    photoCandidates.filter(el => el.dataset.lightboxIndex !== undefined).forEach(el => {
+      const i = Number(el.dataset.lightboxIndex);
       el.tabIndex = 0;
       el.setAttribute('role', 'button');
       const cap = $('figcaption', el);
