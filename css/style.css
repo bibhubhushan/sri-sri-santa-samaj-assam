@@ -1656,6 +1656,211 @@ body.lb-open { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) { .skip-link { transition: none; } }
 
+/* =====================================================================
+   31. MOBILE EDITION
+   A phone is treated as its own editorial canvas: fewer simultaneous
+   elements, shorter reading measures, useful photography earlier, and
+   compact evidence cards instead of a compressed desktop composition.
+   ===================================================================== */
+@media (max-width: 620px) {
+  :root {
+    --gut: 18px;
+    --r-md: 13px;
+    --r-lg: 20px;
+    --strip-h: 74px;
+  }
+
+  body { font-size: 15px; line-height: 1.62; }
+  [data-reveal],
+  [data-reveal="mask"] > *,
+  .split-line > span { transition-delay: 0ms !important; }
+  .section { padding-block: 52px; }
+  .section-sm { padding-block: 40px; }
+  .h-display { font-size: clamp(39px, 12vw, 48px); line-height: .98; }
+  .h2 { font-size: clamp(32px, 9.5vw, 40px); line-height: 1.02; }
+  .h3 { font-size: 21px; }
+  .lead { font-size: 15px; line-height: 1.6; }
+  .as-head { font-size: 17px; margin-bottom: 7px; }
+  .as-text { font-size: 14px; line-height: 1.75; padding-left: 12px; }
+  .eyebrow { gap: 8px; font-size: 12.5px; }
+  .eyebrow::before { width: 18px; }
+  .eyebrow-en { font-size: 9px; letter-spacing: .15em; margin-left: 5px; }
+
+  .header,
+  .header.scrolled {
+    padding-block: 9px;
+    background: rgba(253,249,241,.94);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    box-shadow: 0 1px 0 var(--line);
+  }
+  .header .wrap { gap: 12px; }
+  .brand { gap: 10px; min-width: 0; }
+  .brand-mark { width: 40px; height: 40px; font-size: 17px; }
+  .brand-txt { min-width: 0; }
+  .brand-txt b { font-size: 14px; white-space: nowrap; }
+  .brand-txt span { font-size: 8px; letter-spacing: .1em; white-space: nowrap; }
+  .burger { width: 40px; height: 40px; flex: 0 0 40px; }
+  .drawer { padding: 82px var(--gut) 28px; }
+  .drawer nav a { padding-block: 6px; }
+  .drawer nav a b { font-size: 19px; }
+  .drawer nav a em { font-size: 18px; }
+
+  .hero {
+    min-height: 0;
+    padding-top: 88px;
+    padding-bottom: 34px;
+    align-items: start;
+  }
+  .hero::before {
+    background:
+      radial-gradient(90% 32% at 86% 10%, rgba(224,180,87,.18), transparent 68%),
+      linear-gradient(180deg, rgba(198,37,43,.025), transparent 46%);
+  }
+  .hero-grid { gap: 26px; }
+  .hero-pill {
+    max-width: 100%;
+    padding: 7px 11px 7px 9px;
+    margin-bottom: 12px;
+    font-size: 10.5px;
+    line-height: 1.35;
+  }
+  .hero-as { font-size: 16px; margin-bottom: 5px; }
+  .hero h1 { max-width: 9.5ch; }
+  .hero-sub { margin-top: 14px; font-size: 15px; line-height: 1.55; }
+  .hero-sub-as { margin-top: 8px; font-size: 13px; line-height: 1.68; }
+  .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+  .hero-actions .btn { justify-content: center; min-height: 47px; padding: 12px 14px; font-size: 12.5px; text-align: center; }
+  .hero-foot { display: none; }
+
+  .hero-stage { aspect-ratio: 5 / 4; border-radius: 18px; box-shadow: 0 18px 42px rgba(26,17,8,.16); }
+  .hero-frame img { transform: none; }
+  .hero-frame.on img { transition: none; }
+  .live-card {
+    left: 10px; right: 10px; bottom: 10px;
+    max-width: none;
+    gap: 9px;
+    padding: 8px 12px 8px 8px;
+    border-radius: 14px;
+    box-shadow: 0 10px 28px rgba(26,17,8,.22);
+  }
+  .live-thumb { width: 38px; height: 38px; }
+  .live-tag { font-size: 8px; letter-spacing: .1em; }
+  .live-card b { font-size: 12.5px; }
+  .hero-meta { margin-top: 11px; display: block; }
+  .hero-cap { padding: 9px 0 8px 12px; border-left-width: 2px; background: none; }
+  .hero-cap .cap-kicker { margin-bottom: 3px; font-size: 8px; }
+  .hero-cap .cap-title b { font-size: 13px; }
+  .hero-cap .cap-title strong { font-size: 14px; }
+  .hero-cap .cap-value,
+  .hero-cap .cap-credit,
+  .hero-ticks { display: none; }
+
+  .gamosa { height: 18px; background-size: auto 18px; }
+  .marquee { padding-block: 11px; }
+  .marquee-track { gap: 24px; padding-right: 24px; }
+  .marquee-track span { font-size: 14px; }
+
+  .mission-text { margin-top: 22px; font-size: 28px; line-height: 1.24; }
+  .mission-text w { color: var(--ink); }
+  .mission-text w.key { color: var(--red); font-style: italic; }
+  .mission-as { margin-top: 22px; font-size: 14px; line-height: 1.75; }
+  .mission-sign { margin-top: 25px; gap: 10px; }
+  .mission-sign .small-caps { width: 100%; font-size: 9px; }
+
+  .plate-band { padding-bottom: 0; }
+  .plate-band .plate { aspect-ratio: 16 / 11; }
+  .plate-band .plate::after { background: linear-gradient(0deg, rgba(26,17,8,.28), transparent 48%); }
+  .plate-label {
+    position: relative;
+    left: auto; bottom: auto;
+    max-width: none;
+    padding: 20px 18px 24px 34px;
+    background: var(--ink);
+  }
+  .plate-label::before { left: 18px; top: 22px; bottom: 26px; }
+  .plate-label .pl-no { font-size: 8px; }
+  .plate-label b { font-size: 17px; }
+  .plate-label strong { font-size: 24px; }
+  .plate-label .value-copy { font-size: 12.5px; line-height: 1.55; }
+
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat { padding: 22px 14px; border-bottom: 1px solid var(--line); }
+  .stat:nth-child(odd) { border-right: 1px solid var(--line); }
+  .stat:nth-child(even) { border-right: none; }
+  .stat:nth-last-child(-n+2) { border-bottom: none; }
+  .stat b { font-size: 38px; }
+  .stat p { margin-top: 8px; font-size: 11.5px; }
+
+  .sec-head { gap: 17px; margin-bottom: 28px; }
+  .sec-head h2 { margin-top: 10px; }
+
+  .work-row { display: block; padding-block: 19px; }
+  .work-row::before,
+  .work-go { display: none; }
+  .work-num { display: block; margin-bottom: 8px; font-size: 10px; color: var(--red); }
+  .work-row > div {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 94px;
+    grid-template-rows: auto auto;
+    gap: 7px 14px;
+    align-items: start;
+  }
+  .work-row h3 { grid-column: 1; grid-row: 1; }
+  .work-row h3 i { font-size: 14px; line-height: 1.4; }
+  .work-desc { grid-column: 1; grid-row: 2; margin: 0; font-size: 12.5px; line-height: 1.48; }
+  .work-desc-as { display: none; }
+  .work-row .thumb-inline {
+    display: block;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: 94px;
+    height: 94px;
+    margin: 0;
+    aspect-ratio: 1;
+    border-radius: 11px;
+  }
+
+  .split, .feature { gap: 26px; }
+  .split-media, .split-media.tall { aspect-ratio: 4 / 3; border-radius: 16px; }
+  .feature-media { aspect-ratio: 4 / 3; border-radius: 16px; }
+  .badge-float { right: 10px; bottom: 10px; max-width: 138px; padding: 12px; }
+  .badge-float b { font-size: 27px; }
+  .badge-float span { font-size: 9.5px; }
+
+  .parallax { min-height: 470px; }
+  .pano-media { height: 210px; }
+  .pano-copy { position: relative; padding: 28px 18px 38px; background: var(--ink); }
+  .pano-copy blockquote { font-size: 31px; }
+
+  .mosaic { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .mosaic .plate { grid-column: span 1 !important; aspect-ratio: 1 !important; }
+  .mosaic .m1 { grid-column: span 2 !important; aspect-ratio: 16 / 10 !important; }
+  .mosaic figcaption { padding: 34px 10px 10px; }
+  .mosaic figcaption b { font-size: 12.5px; }
+  .mosaic figcaption span { font-size: 10px; }
+
+  .ledger { gap: 0; }
+  .led { grid-template-columns: 25px 58px 1fr; gap: 10px; padding-block: 13px; }
+  .led-shot { width: 58px; height: 58px; }
+  .led-body b { font-size: 13px; }
+  .led-body span { font-size: 11.5px; line-height: 1.4; }
+
+  .archive { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .cred-grid { grid-template-columns: 1fr 1fr; }
+  .cred { padding: 18px 14px; }
+  .cred dd { font-size: 14px; }
+
+  .panel { padding: 22px 18px; border-radius: 16px; }
+  .big-num { font-size: clamp(21px, 7vw, 27px); }
+  .contact-grid { gap: 28px; }
+  .field input, .field textarea { font-size: 16px; }
+  .footer { padding-top: 46px; }
+  .footer-top { gap: 28px; }
+  .footer-bottom { align-items: flex-start; }
+  .to-top { width: 44px; height: 44px; right: 14px; bottom: 14px; }
+}
+
 /* Office photograph beneath the address — the signboard in frame carries the
    registration number, so the address is corroborated rather than asserted. */
 .office-shot {

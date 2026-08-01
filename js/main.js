@@ -16,6 +16,7 @@
     window.matchMedia('(prefers-reduced-motion: reduce)').matches || staticMode;
   const fine =
     window.matchMedia('(hover: hover) and (pointer: fine)').matches && !staticMode;
+  const compact = window.matchMedia('(max-width: 900px)').matches;
 
   if (staticMode) {
     document.documentElement.classList.add('static-shot');
@@ -63,7 +64,7 @@
   }
 
   window.addEventListener('load', () => {
-    const wait = reduced ? 0 : 900;
+    const wait = reduced || compact ? 0 : 900;
     setTimeout(() => {
       preloader.classList.add('done');
       revealHero();
@@ -484,7 +485,7 @@
   }
 
   function heroPlay() {
-    if (reduced || frames.length < 2) return;
+    if (reduced || compact || frames.length < 2) return;
     clearInterval(heroTimer);
     heroTimer = setInterval(() => showFrame(heroAt + 1), HOLD);
   }
@@ -502,7 +503,7 @@
       });
     }
     paintCap(0);
-    if (reduced) {
+    if (reduced || compact) {
       $$('button', heroTicks).forEach(t => { t.querySelector('i').style.transform = 'scaleY(1)'; });
     } else {
       showFrame(0);
