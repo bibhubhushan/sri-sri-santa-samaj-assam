@@ -85,6 +85,7 @@
   /* ---------- Scroll progress ---------- */
   const progress = $('#progress');
   const toTop = $('#toTop');
+  const mobileDock = $('.mobile-action-dock');
 
   /* ---------- Header behaviour ---------- */
   const header = $('#header');
@@ -323,6 +324,7 @@
     lastY = y;
 
     toTop.classList.toggle('show', y > 700);
+    mobileDock?.classList.toggle('is-visible', y > 440);
 
     updateMission();
     updateParallax();

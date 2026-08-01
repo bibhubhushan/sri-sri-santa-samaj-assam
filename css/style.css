@@ -2398,3 +2398,220 @@ body.magazine-open-body { overflow: hidden; }
   .mobile-programme summary .programme-mark { width: 66px; height: 66px; }
   .mobile-programme > p { margin-left: 76px; }
 }
+
+/* =====================================================================
+   32. MOBILE STORY REFINEMENT
+   The phone edition leads with a real programme photograph, gives each
+   action block a distinct rhythm, and keeps the three useful destinations
+   reachable without reopening the menu.
+   ===================================================================== */
+@media (max-width: 620px) {
+  html { scroll-padding-top: 72px; }
+  body { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+
+  .header,
+  .header.scrolled { padding-block: 7px; }
+  .header .wrap { min-height: 48px; }
+  .brand-mark { box-shadow: 0 8px 22px rgba(198,37,43,.18); }
+
+  /* Put the one verified Barsabah photograph directly after the promise. */
+  .hero { padding-top: 78px; padding-bottom: 40px; }
+  .hero-grid { display: flex; flex-direction: column; gap: 0; }
+  .hero-copy { display: contents; }
+  .hero-pill { order: 1; align-self: flex-start; margin-bottom: 12px; }
+  .hero-as { order: 2; margin: 0 0 4px; }
+  .hero h1 { order: 3; max-width: 8.8ch; font-size: clamp(39px, 11.8vw, 48px); line-height: .95; }
+  .hero-figure { order: 4; margin-top: 20px; }
+  .mobile-hero-location { order: 5; margin: 20px 0 0; padding-left: 18px; position: relative; }
+  .mobile-hero-location::before {
+    content: "";
+    position: absolute; left: 1px; top: .45em;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--red); box-shadow: 0 0 0 5px rgba(198,37,43,.09);
+  }
+  .mobile-hero-summary {
+    order: 6;
+    margin: 10px 0 0;
+    color: var(--ink-2);
+    font-size: 14px;
+    line-height: 1.58;
+  }
+  .mobile-hero-actions { order: 7; margin-top: 18px; }
+  .hero-sub,
+  .hero-sub-as,
+  .hero-copy > .hero-actions,
+  .hero-foot { display: none !important; }
+
+  .hero-stage {
+    aspect-ratio: 4 / 3;
+    border: 1px solid rgba(198,37,43,.2);
+    border-radius: 24px;
+    box-shadow: 9px 9px 0 rgba(224,180,87,.16), 0 24px 54px rgba(26,17,8,.18);
+  }
+  .hero-stage::after {
+    background: linear-gradient(0deg, rgba(26,17,8,.48), rgba(26,17,8,0) 46%);
+  }
+  .hero-photo-seal {
+    top: 12px; right: 12px; min-width: 94px;
+    padding: 8px 11px; border-radius: 13px;
+  }
+  .hero-photo-seal i { font-size: 6.5px; }
+  .hero-photo-seal b { font-size: 12px; }
+  .hero-mobile-photo-note {
+    position: relative; z-index: 5;
+    width: calc(100% - 26px);
+    margin: -50px 13px 0;
+    padding: 12px 14px;
+    border: 1px solid rgba(198,37,43,.12);
+    border-left: 3px solid var(--red);
+    border-radius: 14px;
+    background: rgba(253,249,241,.96);
+    box-shadow: 0 12px 28px rgba(26,17,8,.15);
+    color: var(--ink);
+    font: 600 11px/1.45 var(--sans);
+  }
+
+  /* A tighter, more useful trust strip. */
+  .section-sm.bg-sand { padding-block: 24px; }
+  .stats { gap: 8px; background: transparent; }
+  .stat {
+    min-height: 102px;
+    padding: 16px 12px;
+    border: 1px solid var(--line) !important;
+    border-radius: 14px;
+    background: rgba(253,249,241,.72);
+  }
+  .stat b { font-size: 31px; }
+  .stat p { margin-top: 6px; }
+
+  .section { padding-block: 50px; }
+  #work .sec-head,
+  #record .sec-head,
+  #heritage .sec-head { margin-bottom: 22px; }
+  .sec-head h2 { letter-spacing: -.025em; }
+
+  .mobile-programme summary { min-height: 90px; }
+  .mobile-programme summary img,
+  .mobile-programme summary .programme-mark { width: 68px; height: 68px; }
+  .mobile-programme summary { grid-template-columns: 68px minmax(0,1fr) 28px; }
+  .mobile-programme b { font-size: 17px; }
+  .mobile-programme > p { margin-left: 81px; }
+
+  #record { background: linear-gradient(180deg, var(--sand), #f5ecd9); }
+  #record .archive-photo-note {
+    margin: -4px 0 12px;
+    padding: 12px 14px;
+    border-radius: 0 12px 12px 0;
+    font-size: 11.5px;
+  }
+  .led { padding-block: 12px; }
+  .mobile-record-toggle { background: rgba(253,249,241,.58); }
+
+  /* Current relief record: show the supplied evidence before the explanation. */
+  #now { background: #f2e7d1; }
+  #now .h2 { font-size: clamp(34px, 10vw, 42px); }
+  .now-proof {
+    margin: 18px 0 16px;
+    aspect-ratio: 16 / 10;
+    border-radius: 18px;
+    box-shadow: 0 18px 36px rgba(26,17,8,.14);
+  }
+  .now-proof img { object-position: center 48%; }
+  .now-proof figcaption,
+  .mobile-membership-photo figcaption {
+    padding: 42px 14px 13px;
+  }
+  .now-proof figcaption b,
+  .mobile-membership-photo figcaption b { font-size: 14px; }
+  .now-proof figcaption span,
+  .mobile-membership-photo figcaption span { font-size: 10px; }
+  #now .lead { font-size: 14px; line-height: 1.55; }
+  #now .feature-list { margin-top: 18px; }
+  #now .feature-list li { padding-block: 8px; }
+
+  /* The archive reads as a tactile strip, not another document table. */
+  #heritage .sec-head .lead { font-size: 13px; line-height: 1.55; }
+  #heritage .sec-head .as-text { display: none !important; }
+  #heritage .mosaic { padding-bottom: 14px; }
+  #heritage .mosaic .plate,
+  #heritage .mosaic .m1 {
+    flex-basis: min(86vw, 350px);
+    aspect-ratio: 5 / 4 !important;
+    box-shadow: 0 14px 30px rgba(26,17,8,.12);
+  }
+
+  /* Membership becomes human and specific. */
+  #involve { background: linear-gradient(160deg, #efe2c9, #f8f1e3); }
+  .mobile-membership h2 {
+    max-width: 10ch;
+    margin-top: 8px;
+    font: 500 clamp(33px, 9.5vw, 40px)/1.02 var(--display);
+    letter-spacing: -.025em;
+  }
+  .mobile-membership-photo {
+    margin-top: 20px;
+    aspect-ratio: 16 / 10;
+    border-radius: 18px;
+    box-shadow: 0 16px 34px rgba(26,17,8,.14);
+  }
+  .mobile-membership details { margin-top: 16px; }
+
+  #support { background: #fbf6ec; }
+  .mobile-trust-row > span {
+    display: flex;
+    min-height: 72px;
+    margin: 0;
+    padding: 10px 6px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    box-shadow: 0 8px 20px rgba(26,17,8,.045);
+  }
+  .mobile-contact-action { box-shadow: 0 8px 20px rgba(26,17,8,.045); }
+
+  #contact .panel {
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(255,255,255,.5);
+  }
+  #contact .panel .h2 { font-size: 36px; }
+  .to-top { display: none !important; }
+
+  .mobile-action-dock {
+    position: fixed; z-index: 1250;
+    left: 12px; right: 12px;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    min-height: 58px;
+    padding: 5px;
+    border: 1px solid rgba(253,249,241,.16);
+    border-radius: 20px;
+    background: rgba(26,17,8,.94);
+    box-shadow: 0 18px 44px rgba(26,17,8,.3);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(16px);
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .mobile-action-dock.is-visible { opacity: 1; pointer-events: auto; transform: none; }
+  .mobile-action-dock a {
+    min-width: 0;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border-radius: 15px;
+    color: rgba(253,249,241,.78);
+  }
+  .mobile-action-dock a:first-child { background: var(--red); color: var(--white); }
+  .mobile-action-dock span { color: var(--muga-lite); font-size: 13px; }
+  .mobile-action-dock a:first-child span { color: var(--white); }
+  .mobile-action-dock b { font: 600 11px var(--sans); white-space: nowrap; }
+  body.lb-open .mobile-action-dock,
+  body.menu-open .mobile-action-dock { opacity: 0; pointer-events: none; transform: translateY(14px); }
+}
