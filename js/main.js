@@ -451,28 +451,10 @@
   /* ---------- Hero sequence ---------- */
   const HERO = [
     {
-      as: 'বিশ্ব পৰিৱেশ দিৱস উদ্‌যাপন',
-      en: 'World Environment Day Celebration.',
-      value: 'Students with saplings in a programme photograph verified by SRI SRI SANTA SAMAJ.',
-      credit: 'শ্ৰীশ্ৰীসন্ত সমাজ অসম · date and venue not yet supplied'
-    },
-    {
-      as: 'বিনামূলীয়া শিক্ষা-সামগ্ৰী বিতৰণ',
-      en: 'Free Distribution of Educational Kits.',
-      value: 'A student receives educational materials in the SRI SRI SANTA SAMAJ programme photograph.',
-      credit: 'শ্ৰীশ্ৰীসন্ত সমাজ অসম · date and venue not yet supplied'
-    },
-    {
       as: 'বাৰ্ষিক বৰসবাহ নামসেৱা',
       en: 'Annual Barsabah Namseva.',
-      value: 'A Namseva gathering photographed inside a Namghar.',
-      credit: 'শ্ৰীশ্ৰীসন্ত সমাজ অসম · date and venue not yet supplied'
-    },
-    {
-      as: 'মহিলা কল্যাণ',
-      en: 'Women\'s Welfare.',
-      value: 'A SRI SRI SANTA SAMAJ photograph connected with its women\'s welfare work.',
-      credit: 'শ্ৰীশ্ৰীসন্ত সমাজ অসম · date and venue not yet supplied'
+      value: 'The second Annual Barsabah Namseva of SRI SRI SANTA SAMAJ, held on 26 April inside the Namghar.',
+      credit: 'SRI SRI SANTA SAMAJ photo archive'
     }
   ];
   const HOLD = 7000;
