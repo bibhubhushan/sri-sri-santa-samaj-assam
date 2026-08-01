@@ -450,28 +450,28 @@
   /* ---------- Hero sequence ---------- */
   const HERO = [
     {
-      as: '২৬ এপ্ৰিল · দ্বিতীয় বাৰ্ষিক বৰসবাহ নামসেৱা',
-      en: 'Second Annual Barsabah Namseva.',
-      value: '7am–4pm at Srimanta Sankardev Namghar and Kalakristi Kendra, Baghagobinda Barbaruah Road, Guwahati.',
-      credit: '© শ্ৰীশ্ৰীসন্ত সমাজ অসম · details confirmed by newspaper notice dated 17 April'
+      as: 'বিশ্ব পৰিৱেশ দিৱস উদ্‌যাপন',
+      en: 'World Environment Day Celebration.',
+      value: 'Students with saplings in a programme photograph verified by the Samaj.',
+      credit: 'শ্ৰীশ্ৰীসন্ত সমাজ অসম · date and venue not yet supplied'
     },
     {
-      as: 'পৰিৱেশ কাৰ্যসূচী',
-      en: 'Students with saplings.',
-      value: 'The Samaj banner identifies an environment programme; the date was not supplied.',
-      credit: '© শ্ৰীশ্ৰীসন্ত সমাজ অসম · date not supplied'
+      as: 'বিনামূলীয়া শিক্ষা-সামগ্ৰী বিতৰণ',
+      en: 'Free Distribution of Educational Kits.',
+      value: 'A student receives educational materials in the Samaj programme photograph.',
+      credit: 'শ্ৰীশ্ৰীসন্ত সমাজ অসম · date and venue not yet supplied'
     },
     {
-      as: 'সমাজৰ সংৰক্ষিত আলোকচিত্ৰ',
-      en: 'Community prayer gathering.',
-      value: 'The exact event and date are not identified in the supplied file.',
-      credit: '© শ্ৰীশ্ৰীসন্ত সমাজ অসম · event/date not supplied'
+      as: 'বাৰ্ষিক বৰসবাহ নামসেৱা',
+      en: 'Annual Barsabah Namseva.',
+      value: 'A Namseva gathering photographed inside a Namghar.',
+      credit: 'শ্ৰীশ্ৰীসন্ত সমাজ অসম · date and venue not yet supplied'
     },
     {
-      as: 'বানপানী সাহায্য',
-      en: 'Flood-relief collection in Sivsagar.',
-      value: 'A collection point documented in the Samaj’s supplied relief photographs.',
-      credit: '© শ্ৰীশ্ৰীসন্ত সমাজ অসম'
+      as: 'মহিলা কল্যাণ',
+      en: 'Women\'s Welfare.',
+      value: 'A Samaj photograph connected with its women\'s welfare work.',
+      credit: 'শ্ৰীশ্ৰীসন্ত সমাজ অসম · date and venue not yet supplied'
     }
   ];
   const HOLD = 7000;
