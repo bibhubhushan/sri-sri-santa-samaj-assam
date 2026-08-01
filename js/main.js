@@ -450,10 +450,10 @@
   /* ---------- Hero sequence ---------- */
   const HERO = [
     {
-      as: 'সমাজৰ সংৰক্ষিত আলোকচিত্ৰ',
-      en: 'A gathering in the Samaj archive.',
-      value: 'The supplied file does not identify the exact event or date.',
-      credit: '© শ্ৰীশ্ৰীসন্ত সমাজ অসম · event/date not supplied'
+      as: '২৬ এপ্ৰিল · দ্বিতীয় বাৰ্ষিক বৰসবাহ নামসেৱা',
+      en: 'Second Annual Barsabah Namseva.',
+      value: '7am–4pm at Srimanta Sankardev Namghar and Kalakristi Kendra, Baghagobinda Barbaruah Road, Guwahati.',
+      credit: '© শ্ৰীশ্ৰীসন্ত সমাজ অসম · details confirmed by newspaper notice dated 17 April'
     },
     {
       as: 'পৰিৱেশ কাৰ্যসূচী',
