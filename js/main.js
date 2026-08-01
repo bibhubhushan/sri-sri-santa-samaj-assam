@@ -627,6 +627,74 @@
     });
   }
 
+  /* ---------- Magazine front / back viewer ---------- */
+  const magazineViewer = $('#magazineViewer');
+  const magazineOpen = $('.magazine-open');
+  const magazineRecord = $('.magazine-record');
+  const magazineClose = $('#magazineClose');
+  const magazineTabs = [$('#magazineFrontTab'), $('#magazineBackTab')];
+  const magazinePanels = [$('#magazineFrontPanel'), $('#magazineBackPanel')];
+  let magazineLastFocus = null;
+
+  function showMagazinePage(index, focusTab = false) {
+    magazineTabs.forEach((tab, i) => {
+      tab.setAttribute('aria-selected', String(i === index));
+      tab.tabIndex = i === index ? 0 : -1;
+      magazinePanels[i].hidden = i !== index;
+    });
+    if (focusTab) magazineTabs[index].focus();
+  }
+
+  function openMagazine() {
+    if (!magazineViewer) return;
+    magazineLastFocus = document.activeElement;
+    showMagazinePage(0);
+    magazineViewer.hidden = false;
+    document.body.classList.add('magazine-open-body');
+    requestAnimationFrame(() => {
+      magazineViewer.classList.add('open');
+      magazineClose.focus();
+    });
+  }
+
+  function closeMagazine() {
+    if (!magazineViewer) return;
+    magazineViewer.classList.remove('open');
+    document.body.classList.remove('magazine-open-body');
+    setTimeout(() => { magazineViewer.hidden = true; }, reduced ? 0 : 250);
+    magazineLastFocus?.focus();
+  }
+
+  magazineOpen?.addEventListener('click', openMagazine);
+  magazineRecord?.addEventListener('click', e => {
+    if (!e.target.closest('button, a')) openMagazine();
+  });
+  magazineClose?.addEventListener('click', closeMagazine);
+  magazineTabs.forEach((tab, i) => {
+    tab?.addEventListener('click', () => showMagazinePage(i));
+    tab?.addEventListener('keydown', e => {
+      if (!['ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+      e.preventDefault();
+      showMagazinePage(i === 0 ? 1 : 0, true);
+    });
+  });
+  magazineViewer?.addEventListener('click', e => {
+    if (e.target === magazineViewer) closeMagazine();
+  });
+  document.addEventListener('keydown', e => {
+    if (magazineViewer?.hidden) return;
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeMagazine();
+    }
+    if (e.key === 'Tab') {
+      const focusable = $$('button:not([tabindex="-1"])', magazineViewer);
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
   /* ---------- Misc ---------- */
   $('#year').textContent = new Date().getFullYear();
 

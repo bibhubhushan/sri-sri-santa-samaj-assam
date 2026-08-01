@@ -633,7 +633,7 @@
     </div>
 
     <ol class="ledger" id="ledger">
-      <li class="led" data-reveal>
+      <li class="led magazine-record" data-reveal>
         <span class="led-no">০১</span>
         <figure class="plate led-shot" style="--lqip: var(--lqip-doc-gyan-pradip)">
           <picture>
@@ -648,6 +648,9 @@
           <b lang="as">সাধাৰণ জ্ঞান প্ৰদীপ (স্মৃতিগ্ৰন্থ) প্ৰকাশ</b>
           <span>Publication of <i>Sadharan Gyan Pradip</i>, our commemorative volume</span>
         </div>
+        <button class="magazine-open" type="button" aria-haspopup="dialog" aria-controls="magazineViewer">
+          View front and back covers <span aria-hidden="true">↗</span>
+        </button>
       </li>
 
       <li class="led" data-reveal style="--d:60ms">
@@ -1430,6 +1433,35 @@
 </footer>
 
 <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+<!-- ============ MAGAZINE COVER VIEWER ============ -->
+<div class="magazine-viewer" id="magazineViewer" role="dialog" aria-modal="true" aria-labelledby="magazineTitle" hidden>
+  <div class="magazine-dialog">
+    <header class="magazine-dialog-head">
+      <div>
+        <span>7th issue · সপ্তম সংস্কৰণ</span>
+        <h2 id="magazineTitle">Sadharan Gyan Pradip</h2>
+      </div>
+      <button class="magazine-close" id="magazineClose" type="button" aria-label="Close magazine viewer">✕</button>
+    </header>
+
+    <div class="magazine-tabs" role="tablist" aria-label="Magazine covers">
+      <button id="magazineFrontTab" type="button" role="tab" aria-selected="true" aria-controls="magazineFrontPanel">Front cover</button>
+      <button id="magazineBackTab" type="button" role="tab" aria-selected="false" aria-controls="magazineBackPanel" tabindex="-1">Back cover</button>
+    </div>
+
+    <div class="magazine-pages">
+      <figure id="magazineFrontPanel" role="tabpanel" aria-labelledby="magazineFrontTab">
+        <img src="assets/images/derived/doc-gyan-pradip-1200.webp" width="914" height="1200" loading="lazy" decoding="async" alt="Front cover of the seventh issue of Sadharan Gyan Pradip">
+        <figcaption>Front cover · সপ্তম সংস্কৰণ</figcaption>
+      </figure>
+      <figure id="magazineBackPanel" role="tabpanel" aria-labelledby="magazineBackTab" hidden>
+        <img src="assets/images/samaj/doc-gyan-pradip-back.jpg" width="960" height="1280" loading="lazy" decoding="async" alt="Back cover of the seventh issue of Sadharan Gyan Pradip">
+        <figcaption>Back cover · Organisation information and programme details</figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
 
 <!-- ============ LIGHTBOX ============ -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photograph viewer" hidden>
