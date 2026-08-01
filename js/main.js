@@ -18,6 +18,10 @@
     window.matchMedia('(hover: hover) and (pointer: fine)').matches && !staticMode;
   const compact = window.matchMedia('(max-width: 900px)').matches;
 
+  if (compact) {
+    $('#paymentDetails')?.removeAttribute('open');
+  }
+
   if (staticMode) {
     document.documentElement.classList.add('static-shot');
     // Force every lazy image to load, otherwise a screenshot taken after a hash
@@ -58,7 +62,7 @@
 
   function revealHero() {
     $$('#heroTitle .split-line').forEach((line, i) => {
-      setTimeout(() => line.classList.add('in'), i * 110);
+      setTimeout(() => line.classList.add('in'), compact ? 0 : i * 110);
     });
     $$('.hero [data-reveal]').forEach(el => el.classList.add('in'));
   }
@@ -102,12 +106,30 @@
     document.body.style.overflow = open ? 'hidden' : '';
     if (open) {
       $$('#drawer nav a').forEach((a, i) => {
-        a.style.transitionDelay = `${140 + i * 55}ms`;
+        a.style.transitionDelay = compact ? '0ms' : `${140 + i * 55}ms`;
       });
     }
   });
 
   $$('#drawer nav a').forEach(a => a.addEventListener('click', closeMenu));
+
+  $$('.mobile-programme').forEach(item => {
+    item.addEventListener('toggle', () => {
+      if (!compact || !item.open) return;
+      $$('.mobile-programme').forEach(other => {
+        if (other !== item) other.removeAttribute('open');
+      });
+    });
+  });
+
+  const recordToggle = $('#recordToggle');
+  const ledger = $('#ledger');
+  recordToggle?.addEventListener('click', () => {
+    const expanded = ledger.classList.toggle('mobile-expanded');
+    recordToggle.setAttribute('aria-expanded', String(expanded));
+    recordToggle.firstChild.textContent = expanded ? 'Show first three programmes ' : 'View all seven programmes ';
+    recordToggle.querySelector('span').textContent = expanded ? '↑' : '↓';
+  });
 
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && document.body.classList.contains('menu-open')) closeMenu();
@@ -177,7 +199,7 @@
   const easeOutExpo = t => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 
   function runCounter(el) {
-    if (el.hasAttribute('data-plain') || reduced) return;   // markup already holds the final value
+    if (el.hasAttribute('data-plain') || reduced || compact) return;   // markup already holds the final value
     const target = parseFloat(el.dataset.count);
     const suffix = el.dataset.suffix || '';
     const pad = el.hasAttribute('data-pad');
@@ -576,7 +598,9 @@
     shots.forEach((el, i) => {
       el.tabIndex = 0;
       el.setAttribute('role', 'button');
-      el.setAttribute('aria-label', `Open photograph ${i + 1} of ${shots.length}`);
+      const cap = $('figcaption', el);
+      const visibleLabel = cap?.textContent?.trim().replace(/\s+/g, ' ') || `Photograph ${i + 1}`;
+      el.setAttribute('aria-label', `${visibleLabel}. Open photograph ${i + 1} of ${shots.length}`);
       el.addEventListener('click', () => lbOpen(i));
       el.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lbOpen(i); }

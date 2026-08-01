@@ -21,7 +21,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600&family=Noto+Serif+Bengali:wght@500;600;700&display=swap" rel="stylesheet"></noscript>
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='50' fill='%23C6252B'/><text y='70' x='50' text-anchor='middle' font-size='58' fill='%23FDF9F1' font-family='serif'>%E0%A6%B6</text></svg>">
 <meta property="og:locale" content="en_IN">
@@ -105,7 +107,7 @@
 </head>
 <body>
 
-<a href="#mission" class="skip-link">Skip to content</a>
+<a href="#work" class="skip-link">Skip to our work</a>
 
 <div class="preloader" id="preloader">
   <div class="pre-mark" lang="as">শ্ৰীশ্ৰীসন্ত সমাজ অসম<span>Sri Sri Santa Samaj Assam</span></div>
@@ -165,6 +167,7 @@
 </div>
 
 <!-- ============ HERO ============ -->
+<main id="main">
 <section class="hero" id="top">
  <div class="wrap">
   <div class="hero-grid">
@@ -189,6 +192,13 @@
       অসমজুৰি শিক্ষা, স্বাস্থ্য, মহিলা কল্যাণ, কৃষি, সংস্কৃতি আৰু দুৰ্যোগ
       সাহায্যৰ কামত নিয়োজিত এখন চৰকাৰী পঞ্জীভুক্ত সংস্থা।
     </p>
+
+    <p class="mobile-only mobile-hero-location">Borholla, Jorhat · Serving communities across Assam since 2018</p>
+
+    <div class="mobile-only mobile-hero-actions">
+      <a href="tel:+917002942704" class="btn btn-red">Call us <span class="arw">→</span></a>
+      <a href="#work" class="btn btn-ghost">View our work</a>
+    </div>
 
     <div class="hero-actions" data-reveal style="--d:900ms">
       <a href="#support" class="btn btn-red" data-cursor>Support our work <span class="arw">→</span></a>
@@ -384,6 +394,65 @@
           আমাৰ প্ৰতিটো কাৰ্যসূচী এই সাতোটা উদ্দেশ্যৰ ভিতৰতে সীমাবদ্ধ।
         </span>
       </p>
+    </div>
+
+    <div class="mobile-only mobile-programmes" aria-label="Our seven commitments">
+      <details class="mobile-programme">
+        <summary>
+          <img src="assets/images/derived/khol-performance-480.webp" width="94" height="94" loading="lazy" decoding="async" alt="Khol performance at a Samaj gathering">
+          <span><small lang="as">কলা-সংস্কৃতি আৰু আধ্যাত্মিক বিকাশ</small><b>Art, culture and spiritual growth</b></span>
+          <i aria-hidden="true">+</i>
+        </summary>
+        <p>Exhibitions, publications and spiritual practice that carry Assamese culture forward.</p>
+      </details>
+      <details class="mobile-programme">
+        <summary>
+          <img src="assets/images/derived/distribution-women-480.webp" width="94" height="94" loading="lazy" decoding="async" alt="Samaj members distributing cloth to village women">
+          <span><small lang="as">সমাজ কল্যাণ</small><b>Social welfare</b></span>
+          <i aria-hidden="true">+</i>
+        </summary>
+        <p>Practical support for people facing hardship, without discrimination.</p>
+      </details>
+      <details class="mobile-programme">
+        <summary>
+          <img src="assets/images/derived/scholarship-award-480.webp" width="94" height="94" loading="lazy" decoding="async" alt="A schoolgirl receiving an award">
+          <span><small lang="as">শিশু শিক্ষা</small><b>Education for children</b></span>
+          <i aria-hidden="true">+</i>
+        </summary>
+        <p>Values-based learning, examinations, awards and educational materials for students.</p>
+      </details>
+      <details class="mobile-programme">
+        <summary>
+          <img src="assets/images/derived/healthcare-480.webp" width="94" height="94" loading="lazy" decoding="async" alt="A doctor representing community healthcare">
+          <span><small lang="as">স্বাস্থ্য আৰু বিশুদ্ধ খোৱা পানী</small><b>Healthcare and clean water</b></span>
+          <i aria-hidden="true">+</i>
+        </summary>
+        <p>Helping communities reach timely treatment and safe drinking water.</p>
+      </details>
+      <details class="mobile-programme">
+        <summary>
+          <img src="assets/images/derived/loom-weaver-480.webp" width="94" height="94" loading="lazy" decoding="async" alt="A woman weaving a gamosa on a handloom">
+          <span><small lang="as">মহিলা কল্যাণ</small><b>Women's welfare</b></span>
+          <i aria-hidden="true">+</i>
+        </summary>
+        <p>Direct support for expectant mothers and women in difficult circumstances.</p>
+      </details>
+      <details class="mobile-programme">
+        <summary>
+          <img src="assets/images/derived/tree-planting-480.webp" width="94" height="94" loading="lazy" decoding="async" alt="Village members planting a sapling">
+          <span><small lang="as">কৃষি আৰু পৰিৱেশ</small><b>Agriculture and environment</b></span>
+          <i aria-hidden="true">+</i>
+        </summary>
+        <p>Agriculture, animal husbandry, tree planting and cleaner village environments.</p>
+      </details>
+      <details class="mobile-programme">
+        <summary>
+          <img src="assets/images/derived/as-science-480.webp" width="94" height="94" loading="lazy" decoding="async" alt="Students at a mobile science exhibition">
+          <span><small lang="as">বিজ্ঞান-প্ৰযুক্তি সচেতনতা</small><b>Science and technology awareness</b></span>
+          <i aria-hidden="true">+</i>
+        </summary>
+        <p>Making useful scientific knowledge and technology more accessible to young people.</p>
+      </details>
     </div>
 
     <div class="worklist" id="worklist">
@@ -684,6 +753,10 @@
       </li>
     </ol>
 
+    <button class="mobile-only mobile-record-toggle" id="recordToggle" type="button" aria-expanded="false" aria-controls="ledger">
+      View all seven programmes <span aria-hidden="true">↓</span>
+    </button>
+
     <p class="ledger-src" data-reveal>
       <span aria-hidden="true">✳</span>
       Taken from the Samaj's own annual record sheet,
@@ -698,7 +771,8 @@
 <section class="section bg-sand" id="now">
   <div class="wrap">
     <div class="feature">
-      <div class="relief-left" data-reveal>
+      <details class="relief-left mobile-payment-details" id="paymentDetails" data-reveal open>
+        <summary class="mobile-only">Verified flood-relief payment details <span aria-hidden="true">+</span></summary>
         <div class="scan-card">
           <span class="scan-head">
             <b lang="as">বানপানী সাহায্যৰ বাবে</b>
@@ -717,7 +791,7 @@
           </p>
         </div>
 
-      </div>
+      </details>
 
       <div>
         <span class="tag-live" data-reveal lang="as"><i></i> বৰ্তমানৰ কাম · Current initiative</span>
@@ -910,7 +984,7 @@
 </section>
 
 <!-- ============ SCHOLARSHIP ============ -->
-<section class="section">
+<section class="section scholarship-section">
   <div class="wrap">
     <div class="split">
       <div class="split-media tall" data-reveal="mask">
@@ -959,6 +1033,20 @@
 <!-- ============ MEMBERSHIP ============ -->
 <section class="section bg-ink" id="involve">
   <div class="wrap">
+    <div class="mobile-only mobile-membership">
+      <span class="mobile-kicker">Membership · সদস্যপদ</span>
+      <h2>Become part of the Samaj.</h2>
+      <p>Membership is open across Assam to adults committed to education, culture and community welfare.</p>
+      <details>
+        <summary>Who can apply? <span aria-hidden="true">+</span></summary>
+        <ul>
+          <li>18 years of age or older</li>
+          <li>Ready to follow the Samaj's rules and code of conduct</li>
+          <li>Willing to participate in welfare and cultural work</li>
+        </ul>
+      </details>
+      <a href="#contact" class="btn btn-red">Ask about membership <span class="arw">→</span></a>
+    </div>
     <div class="split rev">
       <div class="split-media" data-reveal="mask">
         <figure class="plate" style="--lqip: var(--lqip-village-assembly); --pos: center 46%">
@@ -1007,7 +1095,7 @@
 </section>
 
 <!-- ============ CREDENTIALS ============ -->
-<section class="section-sm">
+<section class="section-sm credentials-section">
   <div class="wrap">
     <div class="sec-head sec-head-single">
       <div>
@@ -1094,6 +1182,25 @@
           পোনপটীয়াকৈ আমাৰ লগত যোগাযোগ কৰক।
         </span>
       </p>
+    </div>
+
+    <div class="mobile-only mobile-support-actions">
+      <div class="mobile-trust-row" aria-label="Registration details">
+        <span><b>2018</b>Registered</span>
+        <span><b>80G</b>Tax exempt</span>
+        <span><b>Jorhat</b>Registered office</span>
+      </div>
+      <p class="mobile-support-warning">This website does not collect money. Confirm every contribution directly with the Samaj first.</p>
+      <a href="tel:+917002942704" class="mobile-contact-action"><span>Call the Samaj</span><b>+91 70029 42704</b></a>
+      <a href="mailto:srisrisantasamaj321@gmail.com" class="mobile-contact-action"><span>Email</span><b>srisrisantasamaj321@gmail.com</b></a>
+      <details class="mobile-registration-details">
+        <summary>Registration details <span aria-hidden="true">+</span></summary>
+        <dl>
+          <div><dt>Registration</dt><dd>RS/JOT/238/H/03 of 2018–2019</dd></div>
+          <div><dt>PAN</dt><dd>AAYAS5919F</dd></div>
+          <div><dt>80G Order</dt><dd>ITBA/EXM/S/80G/2019-20/1017545676(1)</dd></div>
+        </dl>
+      </details>
     </div>
 
     <div class="support-grid">
@@ -1273,6 +1380,7 @@
 </section>
 
 <div class="gamosa gamosa-ink" aria-hidden="true"></div>
+</main>
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
@@ -1354,6 +1462,6 @@
   </div>
 </div>
 
-<script src="js/main.js"></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>

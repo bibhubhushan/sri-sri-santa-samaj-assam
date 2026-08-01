@@ -22,6 +22,13 @@
   --line-2:    rgba(26, 17, 8, 0.20);
   --white:     #ffffff;
 
+  /* Semantic aliases used by the compact mobile composition. */
+  --paper:     var(--cream);
+  --gold:      var(--muga-lite);
+  --serif:     var(--display);
+  --line-strong: var(--line-2);
+  --max:       var(--maxw);
+
   --display: "Fraunces", Georgia, serif;
   --sans:    "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --beng:    "Noto Sans Bengali", sans-serif;
@@ -1869,3 +1876,325 @@ body.lb-open { overflow: hidden; }
   border-radius: var(--r-md);
 }
 .contact-item dd + .office-shot { max-width: 420px; }
+
+/* Elements below form the deliberately shorter phone edition. Desktop keeps
+   the original long-form editorial composition unchanged. */
+.mobile-only { display: none !important; }
+
+@media (max-width: 768px) {
+  :root {
+    --gut: 18px;
+    --r-md: 12px;
+    --r-lg: 16px;
+  }
+
+  html, body { max-width: 100%; overflow-x: clip; }
+  body { font-size: 16px; line-height: 1.58; }
+  .preloader { display: none !important; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+  [data-reveal="mask"] > * { clip-path: none !important; }
+  .split-line > span { transform: none !important; }
+  .mobile-only { display: block !important; }
+  .mobile-hero-actions,
+  .mobile-support-actions { display: grid !important; }
+  summary.mobile-only { display: flex !important; }
+  .section { padding-block: 46px; }
+  .section-sm { padding-block: 34px; }
+  .wrap { width: min(100% - (2 * var(--gut)), var(--max)); }
+
+  /* Keep the phone journey to eight purposeful blocks. */
+  .gamosa,
+  .marquee,
+  #mission,
+  .plate-band,
+  .parallax,
+  .scholarship-section,
+  .credentials-section,
+  .worklist,
+  #involve > .wrap > .split,
+  #support .support-grid,
+  #contact .contact-grid > :first-child,
+  .drawer a[href="#mission"] { display: none !important; }
+
+  .header,
+  .header.scrolled { padding-block: 8px; }
+  .brand-mark { width: 40px; height: 40px; }
+  .brand-txt b { font-size: 13px; }
+  .brand-txt span { font-size: 7.5px; }
+  .burger { width: 44px; height: 44px; }
+
+  /* 1. Hero: purpose, place, photograph and actions in one screen. */
+  .hero { padding-top: 78px; padding-bottom: 38px; }
+  .hero-grid { gap: 20px; }
+  .hero-pill { margin-bottom: 10px; }
+  .hero-as { font-size: 14px; }
+  .hero h1 { max-width: 12ch; font-size: clamp(35px, 10.5vw, 46px); line-height: .98; }
+  .hero-sub { margin-top: 11px; font-size: 15px; line-height: 1.48; }
+  .hero-sub-as,
+  .hero-copy > .hero-actions { display: none !important; }
+  .hero-foot { display: none !important; }
+  .mobile-hero-location {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .mobile-hero-actions {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .mobile-hero-actions .btn {
+    min-height: 46px;
+    padding: 11px 12px;
+    justify-content: center;
+    font-size: 12px;
+  }
+  .hero-stage { aspect-ratio: 16 / 10; border-radius: var(--r-lg); }
+  .hero-frame:not(.on) { display: none; }
+  .live-card { display: none; }
+  .hero-meta { display: none !important; }
+
+  /* 2. Four proof points, kept compact enough to scan. */
+  .stats { background: var(--paper); }
+  .stat { min-height: 116px; padding: 18px 12px; }
+  .stat b { font-size: 34px; line-height: 1; }
+  .stat p { font-size: 11px; line-height: 1.35; }
+  .stat p i { color: var(--red-deep); }
+
+  .sec-head { margin-bottom: 24px; gap: 10px; }
+  .sec-head .lead { display: none; }
+  .sec-head h2 { font-size: clamp(30px, 9vw, 38px); }
+  .sec-head .as-head { font-size: 14px; }
+
+  /* 3. Seven commitments: visual summaries, details only when requested. */
+  .mobile-programmes { border-top: 1px solid var(--line); }
+  .mobile-programme { border-bottom: 1px solid var(--line); }
+  .mobile-programme summary {
+    position: relative;
+    display: grid;
+    grid-template-columns: 74px minmax(0, 1fr) 28px;
+    gap: 13px;
+    align-items: center;
+    min-height: 96px;
+    padding: 10px 0;
+    cursor: pointer;
+    list-style: none;
+  }
+  .mobile-programme summary::-webkit-details-marker,
+  .mobile-payment-details > summary::-webkit-details-marker,
+  .mobile-membership summary::-webkit-details-marker,
+  .mobile-registration summary::-webkit-details-marker { display: none; }
+  .mobile-programme summary::after {
+    content: '+';
+    grid-column: 3;
+    grid-row: 1;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    color: var(--red);
+    font-size: 18px;
+    transition: transform .2s ease;
+  }
+  .mobile-programme[open] summary::after { transform: rotate(45deg); }
+  .mobile-programme summary > i { display: none; }
+  .mobile-programme summary img {
+    grid-column: 1;
+    width: 74px;
+    height: 74px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .mobile-programme summary > span {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .mobile-programme small { order: 2; margin-top: 3px; color: var(--muted); font-size: 11px; }
+  .mobile-programme b { order: 1; font-family: var(--serif); font-size: 18px; line-height: 1.12; }
+  .mobile-programme > p {
+    margin: 0 0 16px 87px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  /* 4. Evidence ledger: three proof records by default. */
+  .ledger .led:nth-child(n+4) { display: none; }
+  .ledger.mobile-expanded .led:nth-child(n+4) { display: grid; }
+  .led { grid-template-columns: 24px 64px minmax(0, 1fr); min-height: 86px; }
+  .led-shot { width: 64px; height: 64px; border-radius: 9px; }
+  .mobile-record-toggle {
+    width: 100%;
+    min-height: 46px;
+    margin-top: 18px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font: 700 12px var(--sans);
+    letter-spacing: .04em;
+  }
+  .mobile-record-toggle span { color: var(--red); margin-left: 6px; }
+  .ledger-source { margin-top: 14px; font-size: 10px; }
+
+  /* 5. Current initiative: result first, payment evidence on demand. */
+  #now .feature { display: flex; flex-direction: column; gap: 22px; }
+  #now .feature > :last-child { order: 1; }
+  #now .feature > .relief-left { order: 2; }
+  #now .feature-media { aspect-ratio: 4 / 3; }
+  #now .feature-list li { font-size: 13px; }
+  #now .feature-list li:nth-child(n+4) { display: none; }
+  #now .hero-actions { margin-top: 18px; }
+  #now .hero-actions .btn { min-height: 46px; }
+  #now .hero-actions .btn:nth-child(n+2) { display: none; }
+  #now .tag-live { color: var(--red-deep); }
+  .mobile-payment-details {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    background: var(--paper);
+    overflow: hidden;
+  }
+  .mobile-payment-details > summary {
+    align-items: center;
+    justify-content: space-between;
+    min-height: 52px;
+    padding: 13px 15px;
+    cursor: pointer;
+    color: var(--ink);
+    font: 700 12px var(--sans);
+  }
+  .mobile-payment-details[open] > summary span { transform: rotate(45deg); }
+  .mobile-payment-details .scan-card { margin: 0 12px 12px; }
+
+  /* 6. Heritage becomes a real swipe gallery; lightbox remains available. */
+  .mosaic {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-inline: calc(-1 * var(--gut));
+    padding: 0 var(--gut) 8px;
+  }
+  .mosaic::-webkit-scrollbar { display: none; }
+  .mosaic .plate,
+  .mosaic .m1 {
+    flex: 0 0 min(82vw, 360px);
+    grid-column: auto !important;
+    aspect-ratio: 4 / 3 !important;
+    border-radius: var(--r-lg);
+    scroll-snap-align: start;
+  }
+  .mosaic figcaption { padding: 42px 14px 13px; }
+  .mosaic figcaption b { font-size: 15px; }
+  .mosaic figcaption span { font-size: 11px; }
+
+  /* 7. Membership: eligibility and action without a second long article. */
+  #involve { background: var(--ink); color: var(--paper); }
+  #involve .eyebrow { color: var(--gold); }
+  #involve .h2 { color: var(--paper); }
+  .mobile-membership > p { color: rgba(253,249,241,.72); font-size: 14px; }
+  .mobile-membership details { margin-top: 18px; border-block: 1px solid rgba(253,249,241,.2); }
+  .mobile-membership summary,
+  .mobile-registration-details summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 50px;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 700;
+  }
+  .mobile-membership summary { color: var(--paper); }
+  .mobile-membership ul { margin: 0 0 16px; padding-left: 20px; color: rgba(253,249,241,.75); font-size: 13px; }
+  .mobile-membership .btn { width: 100%; justify-content: center; min-height: 48px; margin-top: 18px; }
+
+  /* 8. Trust, support and one consolidated contact form. */
+  .mobile-support-actions { gap: 16px; }
+  .mobile-trust-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+  .mobile-trust-row span {
+    min-width: 0;
+    padding: 12px 7px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    text-align: center;
+  }
+  .mobile-trust-row b { display: block; color: var(--muga-lite); font: 700 17px var(--serif); }
+  .mobile-trust-row span { display: block; margin-top: 3px; color: rgba(253,249,241,.76); font-size: 9px; line-height: 1.25; }
+  .mobile-support-warning {
+    padding: 14px;
+    border-left: 3px solid var(--red);
+    background: rgba(198,37,43,.055);
+    font-size: 12px;
+  }
+  .mobile-contact-action {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 58px;
+    padding: 10px 14px;
+    border: 1px solid rgba(253,249,241,.23);
+    border-radius: var(--r-md);
+    color: var(--paper);
+  }
+  .mobile-contact-action span { color: rgba(253,249,241,.58); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
+  .mobile-contact-action b { margin-top: 2px; font-size: 14px; overflow-wrap: anywhere; }
+  .mobile-registration-details { border-top: 1px solid rgba(253,249,241,.2); }
+  .mobile-registration-details summary { color: var(--paper); }
+  .mobile-registration-details dl { margin: 0 0 14px; }
+  .mobile-registration-details dl div { padding-block: 9px; border-top: 1px solid rgba(253,249,241,.1); }
+  .mobile-registration-details dt { color: rgba(253,249,241,.55); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+  .mobile-registration-details dd { margin: 3px 0 0; color: var(--paper); font-size: 12px; overflow-wrap: anywhere; }
+  #support .eyebrow-en { color: rgba(253,249,241,.76); }
+
+  #contact { padding-top: 38px; }
+  #contact .contact-grid { display: block; }
+  #contact .panel { padding: 20px 16px; }
+  #contact .field input,
+  #contact .field textarea,
+  #contact button { min-height: 46px; }
+  #contact .field label i { color: var(--muted); }
+
+  .footer { padding-block: 30px 22px; }
+  .footer-top { display: block; }
+  .footer-top > :not(:first-child),
+  .footer-blurb i,
+  .credits { display: none; }
+  .footer-blurb { max-width: 30ch; margin-top: 14px; font-size: 12px; }
+  .footer .brand-txt span { color: var(--muga-lite); }
+  .footer-bottom { margin-top: 22px; padding-top: 15px; color: rgba(253,249,241,.72); font-size: 9px; }
+
+  summary:focus-visible,
+  .mobile-record-toggle:focus-visible,
+  .mosaic .plate:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+  }
+}
+
+@media (min-width: 621px) and (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+    gap: 26px;
+    align-items: center;
+  }
+  .hero h1 { font-size: clamp(39px, 5.7vw, 44px); }
+  .hero-sub { font-size: 14px; }
+  .hero-stage { aspect-ratio: 4 / 3; }
+}
+
+@media (max-width: 350px) {
+  :root { --gut: 16px; }
+  .brand-txt span { display: none; }
+  .hero h1 { font-size: 34px; }
+  .mobile-programme summary { grid-template-columns: 66px minmax(0, 1fr) 26px; gap: 10px; }
+  .mobile-programme summary img { width: 66px; height: 66px; }
+  .mobile-programme > p { margin-left: 76px; }
+}
