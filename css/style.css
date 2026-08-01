@@ -572,52 +572,61 @@ p:last-child { margin-bottom: 0; }
 .hero-ticks button.on i { animation: tickFill var(--hold, 7s) linear forwards; }
 @keyframes tickFill { to { transform: scaleX(1); } }
 
-/* Live "current work" card — floats off the photograph's bottom-left */
+/* Compact relief link kept fully inside the photograph. */
 .live-card {
   position: absolute; z-index: 4;
-  left: clamp(-18px, -1.4vw, 0px); bottom: clamp(56px, 7vw, 82px);
-  display: flex; align-items: center; gap: 13px;
-  padding: 11px 19px 11px 11px;
-  border-radius: 999px;
-  background: rgba(253,249,241,.94);
-  border: 1px solid rgba(26,17,8,.1);
+  left: 18px; bottom: 18px;
+  width: min(224px, calc(100% - 36px));
+  min-height: 60px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 9px 9px 13px;
+  border-radius: 17px;
+  background: rgba(26,17,8,.74);
+  border: 1px solid rgba(253,249,241,.3);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 18px 44px rgba(26,17,8,.22);
-  max-width: calc(100% - 24px);
+  box-shadow: 0 14px 34px rgba(26,17,8,.28);
+  max-width: none;
   transition: transform .5s var(--ease), box-shadow .5s var(--ease);
 }
-.live-card:hover { transform: translateY(-3px); box-shadow: 0 24px 56px rgba(26,17,8,.28); }
-.live-body { min-width: 0; }
+.live-card:hover { transform: translateY(-3px); box-shadow: 0 20px 44px rgba(26,17,8,.34); }
+.live-body { min-width: 0; flex: 1; }
 .live-tag {
   display: flex; align-items: center; gap: 7px;
-  font-size: 9.5px; font-weight: 700;
-  letter-spacing: .16em; text-transform: uppercase;
-  color: var(--red);
+  color: var(--muga-lite);
+  font-size: 7.5px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
 }
 .live-tag i {
   width: 7px; height: 7px; border-radius: 50%;
-  background: var(--red);
-  box-shadow: 0 0 0 0 rgba(198,37,43,.7);
+  background: var(--muga-lite);
+  box-shadow: 0 0 0 0 rgba(224,180,87,.65);
   animation: livePulse 1.8s ease-out infinite;
   flex-shrink: 0;
 }
 @keyframes livePulse {
-  0%   { box-shadow: 0 0 0 0 rgba(198,37,43,.6); }
-  70%  { box-shadow: 0 0 0 9px rgba(198,37,43,0); }
-  100% { box-shadow: 0 0 0 0 rgba(198,37,43,0); }
+  0%   { box-shadow: 0 0 0 0 rgba(224,180,87,.55); }
+  70%  { box-shadow: 0 0 0 9px rgba(224,180,87,0); }
+  100% { box-shadow: 0 0 0 0 rgba(224,180,87,0); }
 }
 .live-card b {
   display: block;
-  font-family: var(--beng-s); font-weight: 600;
-  font-size: 14.5px; color: var(--ink);
-  line-height: 1.35; margin-top: 2px;
+  margin-top: 4px;
+  color: var(--cream);
+  font: 700 12.5px/1.1 var(--sans);
 }
 .live-card b span {
-  font-family: var(--sans); font-size: 11.5px; font-weight: 500;
-  color: var(--muted); display: block;
+  display: block;
+  margin-top: 3px;
+  color: rgba(253,249,241,.7);
+  font: 500 9.5px/1.15 var(--sans);
 }
-.live-card .arw { color: var(--red); flex-shrink: 0; transition: transform .45s var(--ease); }
+.live-card .arw {
+  width: 32px; height: 32px; flex-shrink: 0;
+  display: grid; place-items: center;
+  border-radius: 50%; background: var(--red); color: var(--white);
+  font-size: 13px; transition: transform .45s var(--ease);
+}
 .live-card:hover .arw { transform: translateX(4px); }
 
 .scroll-cue {
@@ -643,7 +652,7 @@ p:last-child { margin-bottom: 0; }
   .hero h1 { max-width: 18ch; }
   .hero-sub, .hero-sub-as { max-width: 60ch; }
   .hero-stage { aspect-ratio: 4 / 3.2; }
-  .live-card { left: 0; bottom: clamp(50px, 9vw, 66px); }
+  .live-card { left: 12px; bottom: 12px; }
 }
 @media (max-width: 620px) {
   .hero-stage { aspect-ratio: 4 / 3.6; }
@@ -2533,7 +2542,6 @@ body.magazine-open-body { overflow: hidden; }
     letter-spacing: .13em;
     white-space: nowrap;
   }
-  .hero-stage .live-tag span[lang="as"] { display: none; }
   .hero-stage .live-tag i { width: 6px; height: 6px; }
   .hero-stage .live-card b {
     margin-top: 3px;
