@@ -677,6 +677,14 @@
       return { as: HERO[heroIndex].as, en: HERO[heroIndex].en, credit: HERO[heroIndex].credit };
     }
 
+    if (el.matches?.('.objective-illustration') || el.closest('.objective-illustration')) {
+      return {
+        as: 'স্বাস্থ্য আৰু বিশুদ্ধ খোৱা পানী',
+        en: 'Healthcare and clean water — illustrative visual',
+        credit: 'Illustrative visual · Not an event photograph'
+      };
+    }
+
     const figure = el.matches?.('figure') ? el : el.closest('figure');
     const cap = figure ? $('figcaption', figure) : null;
     if (cap) {
@@ -705,7 +713,9 @@
       return {
         as,
         en: copy?.textContent?.trim() || $('img', el)?.alt || '',
-        credit: 'SRI SRI SANTA SAMAJ photo archive'
+        credit: el.closest('.objective-illustration')
+          ? 'Illustrative visual · Not an event photograph'
+          : 'SRI SRI SANTA SAMAJ photo archive'
       };
     }
 
