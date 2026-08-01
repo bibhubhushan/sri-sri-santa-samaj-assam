@@ -68,7 +68,7 @@
   }
 
   window.addEventListener('load', () => {
-    const wait = reduced || compact ? 0 : 900;
+    const wait = 0;
     setTimeout(() => {
       preloader.classList.add('done');
       revealHero();
