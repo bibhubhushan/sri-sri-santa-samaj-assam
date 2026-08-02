@@ -16,6 +16,8 @@
     window.matchMedia('(prefers-reduced-motion: reduce)').matches || staticMode;
   const fine =
     window.matchMedia('(hover: hover) and (pointer: fine)').matches && !staticMode;
+  const compact = window.matchMedia('(max-width: 900px)').matches;
+
   if (staticMode) {
     document.documentElement.classList.add('static-shot');
     // Force every lazy image to load, otherwise a screenshot taken after a hash
