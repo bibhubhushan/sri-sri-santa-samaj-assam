@@ -1,5 +1,5 @@
 /* =====================================================================
-   Sri Sri Santa Samaj Assam — interactions
+   Sri Sri Santa Samaj Asom — interactions
    ===================================================================== */
 (() => {
   'use strict';
