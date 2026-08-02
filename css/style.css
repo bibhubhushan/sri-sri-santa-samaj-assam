@@ -2163,8 +2163,7 @@ body.magazine-open-body { overflow: hidden; }
   .to-top { width: 44px; height: 44px; right: 14px; bottom: 14px; }
 }
 
-/* Office photograph beneath the address — the signboard in frame carries the
-   registration number, so the address is corroborated rather than asserted. */
+/* Cleanliness-drive photograph beneath the registered office address. */
 .office-shot {
   margin-top: 16px;
   aspect-ratio: 4 / 3;
