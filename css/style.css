@@ -935,6 +935,7 @@ p:last-child { margin-bottom: 0; }
 
 /* ---------- 16. Feature ---------- */
 .feature { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(28px, 4vw, 60px); align-items: start; }
+.feature-relief { grid-template-columns: minmax(0, 1fr); max-width: 920px; margin-inline: auto; }
 .feature-media { position: relative; border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 4 / 3.1; }
 .feature-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.1s var(--ease); }
 .feature-media:hover img { transform: scale(1.05); }
@@ -2290,7 +2291,6 @@ body.magazine-open-body { overflow: hidden; }
     list-style: none;
   }
   .mobile-programme summary::-webkit-details-marker,
-  .mobile-payment-details > summary::-webkit-details-marker,
   .mobile-membership summary::-webkit-details-marker,
   .mobile-registration summary::-webkit-details-marker { display: none; }
   .mobile-programme summary::after {
@@ -2368,10 +2368,9 @@ body.magazine-open-body { overflow: hidden; }
   .mobile-record-toggle span { color: var(--red); margin-left: 6px; }
   .ledger-source { margin-top: 14px; font-size: 10px; }
 
-  /* 5. Current initiative: result first, payment evidence on demand. */
+  /* 5. Current initiative: relief work and contact details only. */
   #now .feature { display: flex; flex-direction: column; gap: 22px; }
   #now .feature > :last-child { order: 1; }
-  #now .feature > .relief-left { order: 2; }
   #now .feature-media { aspect-ratio: 4 / 3; }
   #now .feature-list li { font-size: 13px; }
   #now .feature-list li:nth-child(n+4) { display: none; }
@@ -2379,25 +2378,6 @@ body.magazine-open-body { overflow: hidden; }
   #now .hero-actions .btn { min-height: 46px; }
   #now .hero-actions .btn:nth-child(n+2) { display: none; }
   #now .tag-live { color: var(--red-deep); }
-  .mobile-payment-details {
-    width: 100%;
-    border: 1px solid var(--line);
-    border-radius: var(--r-lg);
-    background: var(--paper);
-    overflow: hidden;
-  }
-  .mobile-payment-details > summary {
-    align-items: center;
-    justify-content: space-between;
-    min-height: 52px;
-    padding: 13px 15px;
-    cursor: pointer;
-    color: var(--ink);
-    font: 700 12px var(--sans);
-  }
-  .mobile-payment-details[open] > summary span { transform: rotate(45deg); }
-  .mobile-payment-details .scan-card { margin: 0 12px 12px; }
-
   /* 6. Heritage becomes a real swipe gallery; lightbox remains available. */
   .mosaic {
     display: flex;
